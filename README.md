@@ -6,4 +6,4 @@ To make a change, you must fork the repo, and make a pull request.
 # Rules
 1. Mod must follow all of the Message Board rules. Naming conventions are an exception.
 2. All assets used must either be open assets, made by you, or given proper permission from the owner.
-3. You can not change another person's idea. Only that person can remove it themsselves. However, you can bug-fix it for them, re-format the code, or tweak it ever so slightly.
+3. You can not change another person's idea. Only that person can remove it themselves. However, you can bug-fix it for them, re-format the code, or tweak it ever so slightly.
