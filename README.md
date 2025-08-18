@@ -1,5 +1,7 @@
 # Sonic Robo Social Experiment
-A public mod that anyone can make any change to, as long as it follows the "rules".
+A public mod that anyone can make any change to, as long as it follows the rules.
+
+To make a change, you must fork the repo, and make a pull request.
 
 # Rules
 1. Mod must follow all of the Message Board rules. Naming conventions are an exception.
