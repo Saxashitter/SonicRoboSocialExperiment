@@ -1,0 +1,15 @@
+name = boxxy
+flags = 0
+realname = Boxxy
+hudname = BOXXY
+startcolor = 96
+prefcolor = Green
+supercolor = Gold
+ability = CA_THOK
+actionspd = 60
+normalspeed = 36
+thrustfactor = 5
+accelstart = 96
+acceleration = 40
+contspeed = 17
+contangle = 3

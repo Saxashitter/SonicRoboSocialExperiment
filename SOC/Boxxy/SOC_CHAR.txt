@@ -1,0 +1,17 @@
+
+#Copied from a Blaze mod I made that you wont ever see
+#mostly because i dont like spriting
+
+Character
+SkinName = boxxy
+DisplayName = Boxxy
+TagTextColor = SKINCOLOR_LILAC
+TagOutlineColor = SKINCOLOR_RED
+OppositeColor = SKINCOLOR_ORANGE
+PlayerText = ^4Boxxy^0 is a little robot created for the sole purpose of generating 2.2.9 hype.
+
+^4Ability:^0 box
+box
+
+^4Tip:^0 box
+#

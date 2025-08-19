@@ -1,0 +1,262 @@
+freeslot("MT_MODELPART", "S_MODELPART1", "S_MODELPART2", "S_MODELPART3", "S_MODELPART4", "SPR_BOXX")
+freeslot("S_MODELPART5", "S_MODELPART6", "S_MODELGROUP")
+mobjinfo[MT_MODELPART] = {
+	doomednum = -1,
+	spawnstate = S_MODELPART1,
+	radius = 0,
+	height = 0,
+	flags = MF_NOBLOCKMAP | MF_NOGRAVITY | MF_NOCLIPHEIGHT
+}
+states[S_MODELPART1] = {
+        sprite = SPR_BOXX,
+        frame = FF_PAPERSPRITE|1,
+        tics = -1,
+        nextstate = S_MODELPART1
+}
+states[S_MODELPART2] = {
+        sprite = SPR_BOXX,
+        frame = FF_PAPERSPRITE,
+        tics = -1,
+        nextstate = S_MODELPART2
+}
+states[S_MODELPART3] = {
+        sprite = SPR_BOXX,
+        frame = 1,
+        tics = -1,
+        nextstate = S_MODELPART3
+}
+states[S_MODELPART4] = {
+        sprite = SPR_BOXX,
+        frame = FF_PAPERSPRITE|2,
+        tics = -1,
+        nextstate = S_MODELPART4
+}
+states[S_MODELPART5] = {
+        sprite = SPR_BOXX,
+        frame = FF_PAPERSPRITE|3,
+        tics = -1,
+        nextstate = S_MODELPART5
+}
+states[S_MODELPART6] = {
+        sprite = SPR_BOXX,
+        frame = FF_PAPERSPRITE|4,
+        tics = -1,
+        nextstate = S_MODELPART6
+}
+states[S_MODELGROUP] = {
+        sprite = SPR_BOXX,
+        frame = 5,
+        tics = -1,
+        nextstate = S_MODELGROUP
+}
+local function splat(mo)
+	if mo.state == S_MODELPART3 then
+		mo.renderflags = mo.renderflags | RF_FLOORSPRITE | RF_NOSPLATBILLBOARD 
+	end
+end
+-- verts;
+addHook("MobjThinker", splat, MT_MODELPART)
+local function playthink(p)
+	if p.partm != nil then
+		if p.partm[1] != nil then
+			if p.partm[1].valid != true then
+				p.firstthink = nil
+			end
+		end
+	end
+	if p.firstthink == nil and p.mo.skin == "boxxy" then
+		p.firstthink = "something i guess"
+		if p.partm == nil then
+			p.partm = {}
+		end
+		p.partm[1] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[1].state = S_MODELPART2
+		p.partm[1].group = 16
+		p.partm[2] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[2].group = 16
+		p.partm[3] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[3].group = 16
+		p.partm[4] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[4].group = 16
+		p.partm[5] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[5].state = S_MODELPART3
+		p.partm[5].group = 16
+		p.partm[6] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[6].state = S_MODELPART3
+		p.partm[6].group = 16
+		p.partm[7] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[7].state = S_MODELPART4
+		p.partm[7].group = 16
+		-- back wheels
+		p.partm[8] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[8].state = S_MODELPART5
+		p.partm[9] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[9].state = S_MODELPART5
+		p.partm[10] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[10].state = S_MODELPART5
+		p.partm[11] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[11].state = S_MODELPART5
+		p.partm[12] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[12].state = S_MODELPART5
+		p.partm[13] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[13].state = S_MODELPART5
+		p.partm[14] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[14].state = S_MODELPART6
+		p.partm[15] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[15].state = S_MODELPART6
+		-- groups
+		p.partm[16] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[16].state = S_MODELGROUP
+		p.partm[18] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[18].state = S_MODELGROUP
+		-- front wheels
+		p.partm[19] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[19].state = S_MODELPART5
+		p.partm[20] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[20].state = S_MODELPART5
+		p.partm[21] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[21].state = S_MODELPART5
+		p.partm[22] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[22].state = S_MODELPART5
+		p.partm[23] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[23].state = S_MODELPART5
+		p.partm[24] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[24].state = S_MODELPART5
+		p.partm[25] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[25].state = S_MODELPART6
+		p.partm[26] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[26].state = S_MODELPART6
+		-- front wheel group numbers
+		p.partm[19].group = 18
+		p.partm[20].group = 18
+		p.partm[21].group = 18
+		p.partm[22].group = 18
+		p.partm[23].group = 18
+		p.partm[24].group = 18
+		p.partm[25].group = 18
+		p.partm[26].group = 18
+		-- 17 is for objects without a group (back wheels)
+		p.partm[17] = P_SpawnMobj(p.mo.x,p.mo.y,p.mo.z, MT_MODELPART)
+		p.partm[17].state = S_MODELGROUP
+		if p.partx == nil then
+			p.partx = {}
+		end -- -4 for splats
+		p.partx[1] = 16
+		p.partx[3] = -16
+		p.partx[5] = -20
+		p.partx[6] = -20
+		if p.party == nil then
+			p.party = {}
+		end
+		p.party[1] = 0
+		p.party[3] = 0
+		p.party[2] = 16
+		p.party[4] = -16
+		-- back wheels
+		p.party[8] = 20
+		p.party[9] = -20
+		p.party[14] = 20
+		p.party[15] = -20
+		p.party[10] = 19
+		p.party[11] = -19
+		p.party[12] = 21
+		p.party[13] = -21
+		-- front wheels
+		p.party[19] = 20
+		p.party[20] = -20
+		p.party[25] = 20
+		p.party[26] = -20
+		p.party[21] = 19
+		p.party[22] = -19
+		p.party[23] = 21
+		p.party[24] = -21
+		if p.partz == nil then
+			p.partz = {}
+		end-- +4 for splats
+		p.partz[1] = 8
+		p.partz[3] = 8
+		p.partz[2] = 8
+		p.partz[4] = 8
+		p.partz[7] = 8
+		p.partz[5] = 12+32
+		p.partz[6] = 12
+		if p.parta == nil then
+			p.parta = {}
+		end
+		p.parta[1] = FixedAngle(90*FRACUNIT)
+		p.parta[7] = FixedAngle(90*FRACUNIT)
+		p.parta[3] = FixedAngle(90*FRACUNIT)
+	end
+	if p.mo.skin == "boxxy" then
+		if P_IsObjectOnGround(p.mo) then
+			p.rollspeed = p.speed
+		else
+			p.rollspeed = p.rollspeed - (FRACUNIT / 2)
+			p.rollspeed = max(p.rollspeed, 0)
+		end
+		p.jumpstret = min(p.mo.momz, 10*FRACUNIT)
+		p.partm[14].rollangle = p.partm[14].rollangle + FixedAngle(p.rollspeed)
+		p.partm[15].rollangle = p.partm[14].rollangle
+		p.math = (max(2*p.speed/-3, -15*FRACUNIT) + (15*FRACUNIT)) / 2
+		p.partz[17] = min(max((p.jumpstret)*-1, -20*FRACUNIT), 0)
+		p.partz[16] = max(min(p.jumpstret, 20*FRACUNIT), 0) + p.math
+		p.partx[16] = min(p.speed / 2, 15*FRACUNIT)
+
+	end
+	if p.mo.skin != "boxxy" and p.firstthink != nil then
+		p.partc = 1
+		while p.partm[p.partc] != nil do
+			p.partm[p.partc].state = S_NULL
+			p.partm[p.partc] = nil
+		end
+		p.firstthink = nil
+	end
+end
+local function position()
+	for player in players.iterate
+		if player.mo.skin == "boxxy" then
+			player.partc = 1
+			while player.partm[player.partc] != nil do
+				if player.partx[player.partc] == nil then
+					player.partx[player.partc] = 0
+				end
+				if player.party[player.partc] == nil then
+					player.party[player.partc] = 0
+				end
+				if player.partz[player.partc] == nil then
+					player.partz[player.partc] = 0
+				end
+				if player.parta[player.partc] == nil then
+					player.parta[player.partc] = 0
+				end
+				if player.partm[player.partc].group == nil then
+					player.partm[player.partc].group = 17
+				end
+				player.group = player.partm[player.partc].group
+				if player.partx[player.group] == nil then
+					player.partx[player.group] = 0
+				end
+				if player.party[player.group] == nil then
+					player.party[player.group] = 0
+				end
+				if player.partz[player.group] == nil then
+					player.partz[player.group] = 0
+				end
+				if player.parta[player.group] == nil then
+					player.parta[player.group] = 0
+				end
+				player.mathx = player.mo.x + ((cos(player.drawangle) * player.partx[player.partc]) + (cos(player.drawangle + ANGLE_90) * player.party[player.partc]))
+				player.mathy = player.mo.y + ((sin(player.drawangle) * player.partx[player.partc]) + (sin(player.drawangle + ANGLE_90) * player.party[player.partc]))
+				player.gmathx = (FixedMul(cos(player.drawangle), player.partx[player.group])) + (FixedMul(cos(player.drawangle + ANGLE_90), player.party[player.group]))
+				player.gmathy = (FixedMul(sin(player.drawangle), player.partx[player.group])) + (FixedMul(sin(player.drawangle + ANGLE_90), player.party[player.group]))
+				P_TeleportMove(player.partm[player.partc], player.mathx + player.gmathx, player.mathy + player.gmathy, player.mo.z + ((player.partz[player.partc] * FRACUNIT) + (player.partz[player.group])))
+				player.partm[player.partc].angle = player.parta[player.partc] + player.drawangle + player.parta[player.group]
+				player.partm[player.partc].color = player.mo.color
+				player.partc = player.partc + 1
+				print(tostring((R_PointToDist2(player.mo.x, player.mo.y, player.partm[1].x, player.partm[1].y)*100)/FRACUNIT))
+			end
+		end
+	end
+end
+addHook("PlayerThink", playthink)
+addHook("PostThinkFrame", position)
